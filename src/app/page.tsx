@@ -111,9 +111,9 @@ export default async function Page() {
         </div>
       </section>
 
-      {/* 10-day forecast */}
+      {/* 4-day forecast */}
       <section className="forecast-section">
-        <h2>10-Tage Vorhersage</h2>
+        <h2>Nächste 4 Tage</h2>
         <table className="forecast-table">
           <thead>
             <tr>
@@ -125,7 +125,7 @@ export default async function Page() {
             </tr>
           </thead>
           <tbody>
-            {data.nextDays.map((day) => {
+            {data.nextDays.slice(0, 4).map((day) => {
               const events = toChronological(day.morning, day.afternoon);
               return (
                 <tr key={day.label}>
