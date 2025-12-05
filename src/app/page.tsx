@@ -76,7 +76,7 @@ export default async function Page() {
   );
 
   return (
-    <main className="page">
+    <main className="page notranslate">
       {/* Header */}
       <header className="header">
         <div className="header-left">
@@ -135,16 +135,13 @@ export default async function Page() {
                     if (!ev) return <td key={idx} className="event-cell empty">—</td>;
                     return (
                       <td key={idx} className={`event-cell ${ev.type.toLowerCase()}`}>
-                        <span className="cell-content">
-                          <span className={`cell-icon ${ev.type.toLowerCase()}`}>
-                            {ev.type === "Flut" ? "▲" : "▼"}
-                          </span>
-                          <span className="cell-time">{ev.time}</span>
-                          <span className="cell-height">{compactHeight(ev.height)}</span>
-                          {ev.isFirstOfHalf && ev.coeff && (
-                            <span className="cell-coeff">K:{ev.coeff}</span>
-                          )}
+                        <span className={`cell-icon ${ev.type.toLowerCase()}`}>
+                          {ev.type === "Flut" ? "▲" : "▼"}
                         </span>
+                        {ev.time} {compactHeight(ev.height)}
+                        {ev.isFirstOfHalf && ev.coeff && (
+                          <span className="cell-coeff">K:{ev.coeff}</span>
+                        )}
                       </td>
                     );
                   })}
